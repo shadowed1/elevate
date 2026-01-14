@@ -2,15 +2,15 @@
 # Sucros Wrapper
 # shadowed1
 
-FIFO="/home/chronos/.elevate.fifo"
+FIFO="/home/chronos/.sucros.fifo"
 
 if [[ ! -p "$FIFO" ]]; then
-    echo "elevate: daemon not running" >&2
+    echo "sucros: daemon not running" >&2
     exit 1
 fi
 
 if [[ $# -eq 0 ]]; then
-    echo "usage: elevate <command...>" >&2
+    echo "usage: sucros <command...>" >&2
     exit 1
 fi
 
