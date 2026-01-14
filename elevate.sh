@@ -2,8 +2,8 @@
 # ChromeOS Elevated Shell
 # shadowed1
 
-ELEVATE_DIR="/usr/local/elevate"
-FIFO="$ELEVATE_DIR/elevate.fifo"
+ELEVATE_DIR="/usr/local/"
+FIFO="$ELEVATE_DIR/.elevate.fifo"
 
 if [[ -f /tmp/machine-info ]]; then
     DEVICE_NAME=$(grep '^customization_id=' /tmp/machine-info 2>/dev/null | cut -d= -f2 | tr -d '"')
