@@ -3,12 +3,16 @@
 # shadowed1
 
 FIFO="/usr/local/elevate/elevate.fifo"
-echo "[elevate-daemon] Listening on $FIFO"
+
+sudo rm -f "$FIFO"
+sudo mkfifo "$FIFO"
+exec 3<> "$FIFO"
 
 while true; do
-    if read -r cmd < "$FIFO"; then
+    if read -r cmd <&3; then
+        cmd="${cmd#"${cmd%%[![:space:]]*}"}"
+        cmd="${cmd%"${cmd##*[![:space:]]}"}"
         [[ -z "$cmd" ]] && continue
-        echo "[daemon] Executing: $cmd"
         sudo bash -c "$cmd"
     fi
 done
