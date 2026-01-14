@@ -1,5 +1,5 @@
 #!/bin/bash
-# Bidirectional Sucros Wrapper
+# Sucros Wrapper
 # shadowed1
 
 CMD_FIFO="/home/chronos/.sucros.fifo"
