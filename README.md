@@ -11,3 +11,9 @@
 <pre>bash <(curl -s "https://raw.githubusercontent.com/shadowed1/sucros/main/bin/sucros_downloader.sh?$(date +%s)")</pre>
 
 <br>
+
+# How does this work? 
+
+- Uses `fifo` for bidirectional communication between crosh shell and VT-2 when prepending `sucros` to command. 
+- The daemon uses `read` to passively wait for use of its fifo before it replies back.
+- Fully atomic and ephemeral without any buffer. 
