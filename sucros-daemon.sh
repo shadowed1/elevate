@@ -10,7 +10,7 @@ chown 1000:1000 "$FIFO"
 chmod 600 "$FIFO"
 
 echo
-echo "[elevate-daemon] Listening on $FIFO"
+echo "[sucros-daemon] Listening on $FIFO"
 echo
 
 while true; do
@@ -19,7 +19,7 @@ while true; do
         cmd="${cmd%"${cmd##*[![:space:]]}"}"
         [[ -z "$cmd" ]] && continue
 
-        echo "[elevate-daemon] Running: $cmd" >/dev/tty
+        echo "[sucros-daemon] Running: $cmd" >/dev/tty
         /bin/bash -c "$cmd"
     fi
 done
