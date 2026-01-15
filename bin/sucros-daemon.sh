@@ -1,5 +1,5 @@
 #!/bin/bash
-# Sucros Daemon
+# sucrose Daemon
 # shadowed1
 
 CMD_FIFO="/home/chronos/.sucros.fifo"
