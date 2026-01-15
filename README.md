@@ -58,5 +58,4 @@ https://github.com/shadowed1/sudoCrosh
 *Why make this tool if we can enable sudo natively?*
 
 - This tool does not require rootfs verification disabled and makes fewer changes to our chromebooks out of the box.
-- Recommended for newer ChromeOS/Linux developer mode users or for users just wanting sudo enabled ASAP.
 - No dependencies needed and can undo all of the changes made without updating/reinstalling ChromeOS. 
