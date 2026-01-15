@@ -11,24 +11,21 @@ CYAN=$(tput setaf 6)
 BOLD=$(tput bold)
 RESET=$(tput sgr0)
 
-# Build rainbow indices (same as your shell script)
 rainbow_indices=()
-for ((g=0; g<=5; g++)); do rainbow_indices+=( $((16 + 36*5 + 6*g + 0)) ); done # Red → Yellow
-for ((r=5; r>=0; r--)); do rainbow_indices+=( $((16 + 36*r + 6*5 + 0)) ); done # Yellow → Green
-for ((b=0; b<=5; b++)); do rainbow_indices+=( $((16 + 36*0 + 6*5 + b)) ); done # Green → Cyan
-for ((g=5; g>=0; g--)); do rainbow_indices+=( $((16 + 36*0 + 6*g + 5)) ); done # Cyan → Blue
-for ((r=0; r<=5; r++)); do rainbow_indices+=( $((16 + 36*r + 6*0 + 5)) ); done # Blue → Magenta
-for ((b=5; b>=0; b--)); do rainbow_indices+=( $((16 + 36*5 + 6*0 + b)) ); done # Magenta → Red
+for ((g=0; g<=5; g++)); do rainbow_indices+=( $((16 + 36*5 + 6*g + 0)) ); done
+for ((r=5; r>=0; r--)); do rainbow_indices+=( $((16 + 36*r + 6*5 + 0)) ); done
+for ((b=0; b<=5; b++)); do rainbow_indices+=( $((16 + 36*0 + 6*5 + b)) ); done
+for ((g=5; g>=0; g--)); do rainbow_indices+=( $((16 + 36*0 + 6*g + 5)) ); done
+for ((r=0; r<=5; r++)); do rainbow_indices+=( $((16 + 36*r + 6*0 + 5)) ); done
+for ((b=5; b>=0; b--)); do rainbow_indices+=( $((16 + 36*5 + 6*0 + b)) ); done
 num_colors=${#rainbow_indices[@]}
 
-# Function to color any string
 rainbow_echo() {
     local text="$1"
     local i=0
     local char
 
     while IFS= read -r -n1 char; do
-        # Preserve spaces and formatting
         if [[ "$char" == " " || "$char" == $'\n' ]]; then
             printf "%s" "$char"
         else
@@ -38,9 +35,6 @@ rainbow_echo() {
     done <<< "$text"
     printf "\n"
 }
-
-rainbow_echo "Hello World! This is rainbow text."
-
 
 rainbow_echo
 rainbow_echo ""
