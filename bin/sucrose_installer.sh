@@ -42,5 +42,13 @@ sed -i '/^# <<< SUCROSE SUDO MARKER <<</,/^# <<< END SUCROSE SUDO MARKER <<</d' 
 echo "${RESET}${GREEN}"
 echo "[sucrose] Installation complete"
 echo ${RESET}${BLUE}
-echo "[sucrose] Run: sudo sucrose-daemon in VT-2 logged in as chronos"
 echo "${RESET}"
+
+read -r -p "${BLUE}${BOLD}Start sucros-daemon now? [y/N] ${RESET}" ans
+
+if [[ "$ans" =~ ^[Yy]$ ]]; then
+        echo "${BLUE}Running: sudo sucrose-daemon 2>/dev/null & ${RESET}"
+        sudo sucros-daemon 2>/dev/null &
+else
+        echo "${BLUE}Run: sudo sucrose-daemon in VT-2 logged in as chronos when ready ${RESET}"
+fi
