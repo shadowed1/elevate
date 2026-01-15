@@ -74,7 +74,7 @@ rainbow_echo "                               ..   ':.         .;;.             .
 rainbow_echo "                                   l0Oc         .od,            .l00o. "                           
 rainbow_echo "                                   ,ol'         cO0o.            .:c' "                            
 rainbow_echo "                                                :kkl. "                             
-echo "${RESET}${BOLD}${MAGENTA}                                             "
+echo "${RESET}${YELLOW}                                             "
 echo "                                 ▄▄▄▄▄▄▄                                     "
 echo "                                █████▀▀▀                                     "
 echo "                                 ▀████▄  ██ ██ ▄████ ████▄ ▄███▄ ▄█▀▀▀ ▄█▀█▄ "
