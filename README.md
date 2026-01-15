@@ -41,6 +41,7 @@
 - Fully atomic and ephemeral without any buffer.
 - Can even interact with prompts from VT-2; stdout goes directly to TTY!
 - Dynamically creates/removes sudo alias by checking if no new privileges flag is set.
+- Generates a read-only authorization token to prevent outside processes from using Sucrose.
 
 <br>
 
