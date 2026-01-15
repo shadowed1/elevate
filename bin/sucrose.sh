@@ -1,5 +1,5 @@
 #!/bin/bash
-# Bidirectional Sucrose Wrapper
+# Sucrose Wrapper
 # shadowed1
 
 RED=$(tput setaf 1)
