@@ -13,6 +13,7 @@ curl -fsSL https://raw.githubusercontent.com/shadowed1/sucrose/main/bin/sucrose-
 curl -fsSL https://raw.githubusercontent.com/shadowed1/sucrose/main/bin/sucrose_uninstaller.sh -o "$BIN_DIR/sucrose_uninstaller"
 sudo chmod +x "$BIN_DIR/sucrose"
 sudo chmod +x "$BIN_DIR/sucrose-daemon"
+sudo chmod +x "$BIN_DIR/sucrose_uninstaller"
 
 BASHRC="$HOME/.bashrc"
 
