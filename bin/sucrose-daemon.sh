@@ -27,6 +27,13 @@ mkfifo "$CMD_FIFO"
 chown 1000:1000 "$CMD_FIFO"
 chmod 600 "$CMD_FIFO"
 
+cleanup() {
+    rm -f "$CMD_FIFO" 2>/dev/null
+    echo "${RED}sucrose-daemon stopped${RESET}"
+}
+trap cleanup EXIT
+trap 'exit' SIGINT SIGTERM
+
 echo
 echo "[sucrose-daemon] Listening on $CMD_FIFO"
 echo
