@@ -1,7 +1,6 @@
 #!/bin/bash
 # Sucrose Daemon
 # shadowed1
-
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 YELLOW=$(tput setaf 3)
@@ -41,17 +40,20 @@ echo
 while true; do
     if IFS= read -r line <"$CMD_FIFO"; then
         reply_fifo="${line%%|*}"
-        cmd="${line#*|}"
+        tty_dev="${line#*|}"
+        tty_dev="${tty_dev%%|*}"
+        cmd="${line#*|*|}"
         cmd="${cmd#"${cmd%%[![:space:]]*}"}"
         cmd="${cmd%"${cmd##*[![:space:]]}"}"
-
+        
         [[ -z "$cmd" ]] && continue
         [[ ! -p "$reply_fifo" ]] && continue
-
+        
         echo "[sucrose-daemon] Running: $cmd" >/dev/tty
-
+        
         {
-            /bin/bash -c "$cmd"
-        } 2>&1 | tee /dev/tty >"$reply_fifo"
+            /bin/bash -c "$cmd" <"$tty_dev" >"$tty_dev" 2>&1
+            echo "__SUCROS_EXIT__:$?"
+        } >"$reply_fifo"
     fi
 done
