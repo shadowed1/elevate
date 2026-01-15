@@ -2,8 +2,19 @@
 # Sucrose Installer
 # shadowed1
 
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+BOLD=$(tput bold)
+RESET=$(tput sgr0)
+
 set -e
-echo "[sucrose] Installing..."
+echo "${MAGENTA}Noexec warning can be safely ignored.${RESET}"
+echo
+echo "${GREEN}[sucrose] Installing... ${RESET}"
 BIN_DIR="/usr/local/bin"
 INIT_DIR="/etc/init"
 mkdir -p "$BIN_DIR"
@@ -39,9 +50,9 @@ sed -i '/^# <<< SUCROSE SUDO MARKER <<</,/^# <<< END SUCROSE SUDO MARKER <<</d' 
     echo 'fi'
     echo "# <<< END SUCROSE SUDO MARKER <<<"
 } >> "$TARGET_FILE"
-echo "${RESET}${GREEN}"
+echo "${RESET}${GREEN}${BOLD}"
 echo "[sucrose] Installation complete"
-echo ${RESET}${BLUE}
+echo
 echo "${RESET}"
 
 read -r -p "${BLUE}${BOLD}Start sucros-daemon now? [y/N] ${RESET}" ans
