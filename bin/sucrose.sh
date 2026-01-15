@@ -43,7 +43,6 @@ REPLY_FIFO="/home/chronos/.sucrose.reply.$$"
 
 cleanup() {
     rm -f "$REPLY_FIFO"
-    rm -f "$CMD_FIFO"
     echo "${RED}Stopping sucrose-daemon ${RESET}"
 }
 trap cleanup EXIT
