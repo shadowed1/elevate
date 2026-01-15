@@ -1,6 +1,7 @@
 #!/bin/bash
 # Sucrose Wrapper
 # shadowed1
+
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 YELLOW=$(tput setaf 3)
@@ -11,6 +12,7 @@ BOLD=$(tput bold)
 RESET=$(tput sgr0)
 
 CMD_FIFO="/home/chronos/.sucrose.fifo"
+AUTH_FILE="/home/chronos/.sucrose.auth"
 
 if [[ ! -p "$CMD_FIFO" ]]; then
     echo 'sudo: The "no new privileges" flag is set, which prevents sudo from running as root.'
@@ -20,6 +22,14 @@ if [[ ! -p "$CMD_FIFO" ]]; then
     echo
     exit 1
 fi
+
+if [[ ! -f "$AUTH_FILE" ]]; then
+    echo "${RED}Authentication file not found${RESET}"
+    echo "Please start sucrose-daemon first"
+    exit 1
+fi
+
+AUTH_TOKEN=$(cat "$AUTH_FILE")
 
 if [[ $# -eq 0 ]]; then
     echo "usage: sudo -h | -K | -k | -V "
@@ -43,16 +53,17 @@ REPLY_FIFO="/home/chronos/.sucrose.reply.$$"
 cleanup() {
     rm -f "$REPLY_FIFO"
 }
-trap cleanup EXIT
 
+trap cleanup EXIT
 mkfifo "$REPLY_FIFO"
 chmod 600 "$REPLY_FIFO"
 
 TTY_DEV=$(tty)
 
+cmd=$(printf '%q ' "$@" | sed 's/ $//')
+
 {
-    printf '%s|%s|' "$REPLY_FIFO" "$TTY_DEV"
-    printf '%q ' "$@" | sed 's/ $/\n/'
+    printf '%s|%s|%s|%s\n' "$AUTH_TOKEN" "$REPLY_FIFO" "$TTY_DEV" "$cmd"
 } >"$CMD_FIFO"
 
 exit_code=0
