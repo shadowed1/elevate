@@ -10,7 +10,7 @@
 
 - Requires developer mode. 
 
-- Press `ctrl-alt-t` to open crosh, type `shell` and paste:
+- Press `ctrl-alt-t` to open crosh, type `shell`, and paste:
 
 <pre>bash <(curl -s "https://raw.githubusercontent.com/shadowed1/sucrose/main/bin/sucrose_downloader.sh?$(date +%s)")</pre>
 
