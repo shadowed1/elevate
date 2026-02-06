@@ -192,7 +192,7 @@ echo "${LOGO_COLOR}"
 echo "0.) Enable developer mode."
 echo "1.) ctrl-alt-refresh to open VT-2 (ctrl-alt-back to exit)"
 echo "2.) Log in as chronos"
-echo "3.) Run the command listed below in VT-2 to continue the installer:"
+echo "3.) Run the command listed below in VT-2 logged in as chronos to continue the installer:"
 COLORS=(
     "$RED"
     "$GREEN"
