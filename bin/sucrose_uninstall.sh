@@ -45,6 +45,7 @@ if [[ "$ans" =~ ^[Yy]$ ]]; then
             
         echo "${YELLOW}[+] Uninstalled${RESET}"
         sudo rm /usr/local/bin/sucrose_uninstaller 2>/dev/null
+        sudo rm /usr/local/bin/sucrose_uninstall 2>/dev/null
 else
         echo "${RED}[*] Cancelled ${RESET}"
 fi
