@@ -1,6 +1,7 @@
 #!/bin/bash
 # Sucrose Daemon
 # shadowed1
+
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 YELLOW=$(tput setaf 3)
