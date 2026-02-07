@@ -29,6 +29,7 @@ sudo chmod +x "$BIN_DIR/sucrose"
 sudo chmod +x "$BIN_DIR/sucrose-daemon"
 sudo chmod +x "$BIN_DIR/s-d"
 sudo chmod +x "$BIN_DIR/sucrose_uninstall"
+sudo chmod +x "$BIN_DIR/sucrose_reinstall"
 
 CHROMEOS_BASHRC="/home/chronos/user/.bashrc"
 DEFAULT_BASHRC="$HOME/.bashrc"
