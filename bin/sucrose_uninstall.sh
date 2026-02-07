@@ -16,6 +16,9 @@ if [[ "$ans" =~ ^[Yy]$ ]]; then
             echo "${RED}[*] Removing Sucrose...${RESET}"
             sudo rm /usr/local/bin/sucrose 2>/dev/null
             sudo rm /usr/local/bin/sucrose-daemon 2>/dev/null
+            sudo rm /usr/local/bin/sucrose-reinstall 2>/dev/null
+            sudo rm /usr/local/bin/sucrose-uninstall 2>/dev/null
+            sudo rm /usr/local/bin/sucrose-uninstaller 2>/dev/null
             sudo rm /home/chronos/.sucrose.fifo 2>/dev/null
             sudo rm /home/chronos/.sucrose.fifo 2>/dev/null
             sudo rm /home/chronos/.sucrose.lock 2>/dev/null
