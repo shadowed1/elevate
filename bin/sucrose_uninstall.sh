@@ -1,6 +1,5 @@
 #!/bin/bash
 # Sucrose Uninstaller
-
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 YELLOW=$(tput setaf 3)
@@ -9,43 +8,53 @@ MAGENTA=$(tput setaf 5)
 CYAN=$(tput setaf 6)
 BOLD=$(tput bold)
 RESET=$(tput sgr0)
-
 read -r -p "${RED}${BOLD}Remove Sucrose and its entry from ~/.bashrc? [y/N] ${RESET}" ans
-
 if [[ "$ans" =~ ^[Yy]$ ]]; then
-            echo "${RED}[*] Removing Sucrose...${RESET}"
-            sudo rm /usr/local/bin/sucrose 2>/dev/null
-            sudo rm /usr/local/bin/sucrose-daemon 2>/dev/null
-            sudo rm /usr/local/bin/sucrose-reinstall 2>/dev/null
-            sudo rm /usr/local/bin/sucrose-uninstall 2>/dev/null
-            sudo rm /usr/local/bin/sucrose-uninstaller 2>/dev/null
-            sudo rm /home/chronos/.sucrose.fifo 2>/dev/null
-            sudo rm /home/chronos/.sucrose.fifo 2>/dev/null
-            sudo rm /home/chronos/.sucrose.lock 2>/dev/null
-            sudo rm /home/chronos/.sucrose.auth 2>/dev/null
-            sudo rm /home/chronos/.sucrose.reply* 2>/dev/null
-            sudo rm /usr/local/sucros_installer 2>/dev/null
-            sudo rm /home/chronos/user/sucros_downloader 2>/dev/null
-            unalias sudo 2>/dev/null
-            CHROMEOS_BASHRC="/home/chronos/user/.bashrc"
-            DEFAULT_BASHRC="$HOME/.bashrc"
-            TARGET_FILE=""
-        
-            if [ -f "$CHROMEOS_BASHRC" ]; then
-                TARGET_FILE="$CHROMEOS_BASHRC"
-            elif [ -f "$DEFAULT_BASHRC" ]; then
-                TARGET_FILE="$DEFAULT_BASHRC"
-            fi
-        
-            if [ -n "$TARGET_FILE" ]; then
-                sed -i '/^# <<< SUCROSE SUDO MARKER <<</,/^# <<< END SUCROSE SUDO MARKER <<</d' "$TARGET_FILE"
-            else
-                echo "${RED}No .bashrc found! ${RESET}"
-            fi
-            
-        echo "${YELLOW}[+] Uninstalled${RESET}"
-        sudo rm /usr/local/bin/sucrose_uninstaller 2>/dev/null
-        sudo rm /usr/local/bin/sucrose_uninstall 2>/dev/null
+    echo "${RED}[*] Removing Sucrose...${RESET}"
+    
+    # Kill the sucrose-daemon process first
+    echo "${YELLOW}[*] Stopping sucrose-daemon...${RESET}"
+    pkill -f sucrose-daemon 2>/dev/null
+    sleep 1
+    
+    # Force kill if still running
+    pkill -9 -f sucrose-daemon 2>/dev/null
+    
+    # Remove all sucrose files
+    sudo rm /usr/local/bin/sucrose 2>/dev/null
+    sudo rm /usr/local/bin/sucrose-daemon 2>/dev/null
+    sudo rm /usr/local/bin/sucrose-reinstall 2>/dev/null
+    sudo rm /usr/local/bin/sucrose-uninstall 2>/dev/null
+    sudo rm /usr/local/bin/sucrose-uninstaller 2>/dev/null
+    sudo rm /home/chronos/.sucrose.fifo 2>/dev/null
+    sudo rm /home/chronos/.sucrose.lock 2>/dev/null
+    sudo rm /home/chronos/.sucrose.auth 2>/dev/null
+    sudo rm /home/chronos/.sucrose.reply* 2>/dev/null
+    sudo rm /usr/local/sucros_installer 2>/dev/null
+    sudo rm /home/chronos/user/sucros_downloader 2>/dev/null
+    sudo rm /usr/local/bin/s-d 2>/dev/null
+    unalias s-d 2>/dev/null
+    unalias sudo 2>/dev/null
+    
+    CHROMEOS_BASHRC="/home/chronos/user/.bashrc"
+    DEFAULT_BASHRC="$HOME/.bashrc"
+    TARGET_FILE=""
+
+    if [ -f "$CHROMEOS_BASHRC" ]; then
+        TARGET_FILE="$CHROMEOS_BASHRC"
+    elif [ -f "$DEFAULT_BASHRC" ]; then
+        TARGET_FILE="$DEFAULT_BASHRC"
+    fi
+
+    if [ -n "$TARGET_FILE" ]; then
+        sed -i '/^# <<< SUCROSE SUDO MARKER <<</,/^# <<< END SUCROSE SUDO MARKER <<</d' "$TARGET_FILE"
+    else
+        echo "${RED}No .bashrc found! ${RESET}"
+    fi
+    
+    echo "${YELLOW}[+] Uninstalled${RESET}"
+    sudo rm /usr/local/bin/sucrose_uninstaller 2>/dev/null
+    sudo rm /usr/local/bin/sucrose_uninstall 2>/dev/null
 else
-        echo "${RED}[*] Cancelled ${RESET}"
+    echo "${RED}[*] Cancelled ${RESET}"
 fi
