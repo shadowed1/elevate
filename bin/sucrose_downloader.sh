@@ -1,4 +1,4 @@
-x#!/bin/bash
+#!/bin/bash
 # Sucrose Downloader
 # shadowed1
 
