@@ -22,12 +22,10 @@ mkdir -p "$BIN_DIR"
 
 curl -fsSL https://raw.githubusercontent.com/shadowed1/Sucrose/main/bin/sucrose.sh -o "$BIN_DIR/sucrose"
 curl -fsSL https://raw.githubusercontent.com/shadowed1/Sucrose/main/bin/sucrose-daemon.sh -o "$BIN_DIR/sucrose-daemon"
-curl -fsSL https://raw.githubusercontent.com/shadowed1/Sucrose/main/bin/sucrose-daemon.sh -o "$BIN_DIR/s-d"
 curl -fsSL https://raw.githubusercontent.com/shadowed1/Sucrose/main/bin/sucrose_reinstall.sh -o "$BIN_DIR/sucrose_reinstall"
 curl -fsSL https://raw.githubusercontent.com/shadowed1/Sucrose/main/bin/sucrose_uninstall.sh -o "$BIN_DIR/sucrose_uninstall"
 sudo chmod +x "$BIN_DIR/sucrose"
 sudo chmod +x "$BIN_DIR/sucrose-daemon"
-sudo chmod +x "$BIN_DIR/s-d"
 sudo chmod +x "$BIN_DIR/sucrose_uninstall"
 sudo chmod +x "$BIN_DIR/sucrose_reinstall"
 
