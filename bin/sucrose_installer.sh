@@ -15,7 +15,6 @@ set -e
 echo
 echo "${BOLD}${MAGENTA}Noexec warning can be safely ignored.${RESET}"
 echo
-echo "${GREEN}[sucrose] Installing... ${RESET}"
 BIN_DIR="/usr/local/bin"
 INIT_DIR="/etc/init"
 mkdir -p "$BIN_DIR"
@@ -55,17 +54,17 @@ sed -i '/^# <<< SUCROSE SUDO MARKER <<</,/^# <<< END SUCROSE SUDO MARKER <<</d' 
     echo "# <<< END SUCROSE SUDO MARKER <<<"
 } >> "$TARGET_FILE"
 echo "${RESET}${GREEN}${BOLD}"
-echo "[sucrose] Installation complete"
+echo "Installation complete - Please refresh your ChromeOS shell for changes to take effect."
 echo
 echo "${RESET}"
 
 read -r -p "${BLUE}${BOLD}Start sucros-daemon now? [y/N] ${RESET}" ans
 
 if [[ "$ans" =~ ^[Yy]$ ]]; then
-        echo "${BLUE}Running: sudo sucrose-daemon${RESET}"
+        echo "${BLUE}Running: sudo sucrose-daemon - Return to shell to run sudo commands. ${RESET}"
         sudo sucrose-daemon
 else
-        echo "${CYAN}Run: sudo sucrose-daemon in VT-2 logged in as chronos when ready ${RESET}"
+        echo "${CYAN}Run: sudo sucrose-daemon in VT-2 logged in as chronos when ready. ${RESET}"
 fi
 
 sudo rm /home/chronos/user/sucrose_installer 2>/dev/null
