@@ -48,6 +48,8 @@ sed -i '/^# <<< SUCROSE SUDO MARKER <<</,/^# <<< END SUCROSE SUDO MARKER <<</d' 
     echo 'if [[ "$sudo_output" == "sudo: The \"no new privileges\""* ]]; then'
     echo "    alias s-d='/usr/bin/sudo -E /usr/local/bin/sucrose-daemon'"
     echo "    alias sucrose-daemon='/usr/bin/sudo -E /usr/local/bin/sucrose-daemon'"
+    echo "    alias sucrose_uninstaller='/usr/bin/sudo -E /usr/local/bin/sucrose_uninstaller'"
+    echo "    alias sucrose_reinstaller='/usr/bin/sudo -E /usr/local/bin/sucrose_reinstaller'"
     echo "    alias sudo='sucrose /usr/bin/sudo -E'"
     echo 'else'
     echo '    unalias sudo 2>/dev/null'
