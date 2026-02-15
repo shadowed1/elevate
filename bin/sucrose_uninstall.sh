@@ -8,7 +8,6 @@ MAGENTA=$(tput setaf 5)
 CYAN=$(tput setaf 6)
 BOLD=$(tput bold)
 RESET=$(tput sgr0)
-
 read -r -p "${RED}${BOLD}Remove Sucrose and its entry from ~/.bashrc? [y/N] ${RESET}" ans
 if [[ "$ans" =~ ^[Yy]$ ]]; then
     echo "${RED}[*] Removing Sucrose...${RESET}"
@@ -29,25 +28,20 @@ if [[ "$ans" =~ ^[Yy]$ ]]; then
     sudo rm /usr/local/sucros_installer 2>/dev/null
     sudo rm /home/chronos/user/sucros_downloader 2>/dev/null
     sudo rm /usr/local/bin/s-d 2>/dev/null
-    unalias s-d 2>/dev/null
-    unalias sudo 2>/dev/null
-    
+    unalias sudo 2>/dev/null    
     CHROMEOS_BASHRC="/home/chronos/user/.bashrc"
     DEFAULT_BASHRC="$HOME/.bashrc"
     TARGET_FILE=""
-
     if [ -f "$CHROMEOS_BASHRC" ]; then
         TARGET_FILE="$CHROMEOS_BASHRC"
     elif [ -f "$DEFAULT_BASHRC" ]; then
         TARGET_FILE="$DEFAULT_BASHRC"
     fi
-
     if [ -n "$TARGET_FILE" ]; then
         sed -i '/^# <<< SUCROSE SUDO MARKER <<</,/^# <<< END SUCROSE SUDO MARKER <<</d' "$TARGET_FILE"
     else
         echo "${RED}No .bashrc found! ${RESET}"
     fi
-    
     echo "${YELLOW}[+] Uninstalled${RESET}"
     sudo rm /usr/local/bin/sucrose_uninstaller 2>/dev/null
     sudo rm /usr/local/bin/sucrose_uninstall 2>/dev/null
