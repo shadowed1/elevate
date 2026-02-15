@@ -11,7 +11,7 @@ RESET=$(tput sgr0)
 read -r -p "${RED}${BOLD}Remove Sucrose and its entry from ~/.bashrc? [y/N] ${RESET}" ans
 if [[ "$ans" =~ ^[Yy]$ ]]; then
     echo "${RED}[*] Removing Sucrose...${RESET}"
-    echo "${YELLOW}[*] Stopping sucrose-daemon...${RESET}"
+    echo "${GREEN}[*] Stopping sucrose-daemon...${RESET}"
     pkill -f sucrose-daemon 2>/dev/null
     sleep 1    
     pkill -9 -f sucrose-daemon 2>/dev/null
