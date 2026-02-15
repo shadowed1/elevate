@@ -11,16 +11,11 @@ RESET=$(tput sgr0)
 read -r -p "${RED}${BOLD}Remove Sucrose and its entry from ~/.bashrc? [y/N] ${RESET}" ans
 if [[ "$ans" =~ ^[Yy]$ ]]; then
     echo "${RED}[*] Removing Sucrose...${RESET}"
-    
-    # Kill the sucrose-daemon process first
     echo "${YELLOW}[*] Stopping sucrose-daemon...${RESET}"
     pkill -f sucrose-daemon 2>/dev/null
-    sleep 1
-    
-    # Force kill if still running
+    sleep 1    
     pkill -9 -f sucrose-daemon 2>/dev/null
-    
-    # Remove all sucrose files
+    sleep 1
     sudo rm /usr/local/bin/sucrose 2>/dev/null
     sudo rm /usr/local/bin/sucrose-daemon 2>/dev/null
     sudo rm /usr/local/bin/sucrose-reinstall 2>/dev/null
