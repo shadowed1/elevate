@@ -1,4 +1,4 @@
-#!/bin/bash
+x#!/bin/bash
 # Sucrose Downloader
 # shadowed1
 
@@ -188,7 +188,7 @@ COLORS=(
 )
 
 LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
-echo "${LOGO_COLOR}"
+echo "${BOLD}${LOGO_COLOR}"
 echo "0.) Enable developer mode."
 echo "1.) ctrl-alt-refresh to open VT-2 (ctrl-alt-back to exit)"
 echo "2.) Log in as chronos"
