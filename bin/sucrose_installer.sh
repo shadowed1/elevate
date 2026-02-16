@@ -54,7 +54,7 @@ sed -i '/^# <<< SUCROSE SUDO MARKER <<</,/^# <<< END SUCROSE SUDO MARKER <<</d' 
     echo "# <<< END SUCROSE SUDO MARKER <<<"
 } >> "$TARGET_FILE"
 echo "${RESET}${GREEN}${BOLD}"
-echo "Installation complete - Please refresh your ChromeOS shell for changes to take effect."
+echo "Installation complete - Exit VT-2 and create a new shell tab for changes to take effect."
 echo
 echo "${RESET}"
 
