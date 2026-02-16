@@ -64,7 +64,7 @@ trap cleanup EXIT
 trap 'exit' SIGINT SIGTERM
 echo
 echo "${GREEN}[sucrose-daemon] Listening on $CMD_FIFO"
-echo "[sucrose-daemon] Authentication enabled ${RESET}"
+echo "[sucrose-daemon] Authentication enabled - Ctrl-C to exit. ${RESET}"
 echo
 while true; do
     if [[ ! -p "$CMD_FIFO" ]]; then
