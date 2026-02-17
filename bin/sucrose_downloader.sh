@@ -204,7 +204,8 @@ COLORS=(
 
 LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
 echo "${RESET}${BOLD}${LOGO_COLOR}"
-echo "sudo bash ~/sucrose_installer"
+echo "cd"
+echo "sudo bash sucrose_installer"
 echo
 echo "${RESET}"
 COLORS=(
